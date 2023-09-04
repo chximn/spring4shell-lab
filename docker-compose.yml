@@ -1,0 +1,31 @@
+version: '3.9'
+services:
+  vulnerable:
+    build: vulnerable
+    hostname: vulnerable
+    restart: always
+    ports:
+      - "8080:8080"
+    networks:
+      - lab-network
+
+  patched:
+    build: patched
+    hostname: patched
+    restart: always
+    networks:
+      - lab-network
+
+  attacker:
+    build: attacker
+    hostname: attacker
+    stdin_open: true
+    tty: true
+    volumes:
+      - "./attacker/exploits:/exploits"
+    networks:
+      - lab-network
+
+networks:
+  lab-network:
+    driver: bridge

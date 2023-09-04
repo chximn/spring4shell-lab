@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vulnerable Spring Application</title>
+</head>
+<body>
+    <p>
+        Hello, World!
+    </p>
+
+    <form action="" method="POST">
+        <label>
+            <p>What's your name?</p>
+            <input name="name"/>
+        </label>
+
+        <button>Say Hi!</button>
+    </form>
+
+    <p th:if="${name != ''}">
+        Hi, <span th:utext="${name}"></span>
+    </p>
+</body>
+</html>
